@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_ENDPOINT = 'https://api.edamam.com/api/nutrition-data';
 const APP_ID = 'bba7bbd7';
-const APP_KEY = '17095c14d222439b9a4c43769a5f4559';
+const APP_KEY = 'fdade7e59be9ee5fbbc4dd6770c02e46';
 
 export const getNutritionData = async (foodItem) => {
   try {
