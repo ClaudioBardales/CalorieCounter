@@ -1,21 +1,28 @@
 import './App.css';
-import React from 'react';
-import DailyCalorieCounter from './DailyCalorieCounter';
-import MealList from './MealList';
+import React, { useState } from 'react';
+import DailyCalorieCounter from './components/DailyCalorieCounter';
+import SearchComponent from './components/SearchComponent';
+import { getNutritionData } from './apis/edanam';
 
 const App = () => {
+  const [meals, setMeals] = useState([]);
+  const addMealItem = (foodItem) => {
+    getNutritionData(foodItem)
+      .then((data) => {
+        const mealItem = {
+          name: foodItem,
+          calories: parseInt(data.calories, 10),
+          quantity: 1,
+        };
+        setMeals([...meals, mealItem]);
+      })
+      .catch((error) => console.error('API error: ', error));
+  };
+
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-md-6 p-3">
-          {/* Left Panel */}
-          <DailyCalorieCounter />
-        </div>
-        <div className="col-md-6 p-3">
-          {/* Right Panel */}
-          <MealList />
-        </div>
-      </div>
+    <div className="container">
+      <SearchComponent onSearch={addMealItem} />
+      <DailyCalorieCounter meals={meals} />
     </div>
   );
 };

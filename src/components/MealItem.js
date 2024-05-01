@@ -1,13 +1,15 @@
 import React from 'react';
 
-const MealItem = () => {
+const MealItem = ({ meal }) => {
   return (
     <div className="d-flex justify-content-between align-items-center border-bottom py-2">
       <div className="meal-name">
-        {mealName} <span className="text-muted">{quantity}</span>
+        {meal.name} <span className="text-muted">{meal.quantity}</span>
       </div>
-      <div className="calories">{calories}</div>
+      <div className="calories">{meal.calories} Cal</div>
       <button className="btn btn-outline-danger btn-sm">+</button>
     </div>
   );
 };
+
+export default MealItem;
