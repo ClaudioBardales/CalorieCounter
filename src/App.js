@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import DailyCalorieCounter from './components/DailyCalorieCounter';
 import SearchComponent from './components/SearchComponent';
+import MealList from './components/MealList';
 import { getNutritionData } from './apis/edanam';
 
 const App = () => {
@@ -20,9 +21,10 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <SearchComponent onSearch={addMealItem} />
+    <div className="container-md">
       <DailyCalorieCounter meals={meals} />
+      <SearchComponent onSearch={addMealItem} />
+      <MealList meals={meals} />
     </div>
   );
 };

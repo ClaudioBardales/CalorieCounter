@@ -14,10 +14,10 @@ const SearchComponent = ({ onSearch }) => {
   };
 
   return (
-    <div className="search-container">
+    <div className="input-group input-group-sm">
       <input
         type="text"
-        className="form-control mb-2"
+        className="form-control"
         placeholder="Enter a food item"
         value={input}
         onChange={handleInputChange}
