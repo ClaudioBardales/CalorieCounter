@@ -9,10 +9,10 @@ const App = () => {
   const [meals, setMeals] = useState([]);
   const addMealItem = (foodItem) => {
     getNutritionData(foodItem)
-      .then((data) => {
+      .then((calories) => {
         const mealItem = {
           name: foodItem,
-          calories: parseInt(data.calories, 10),
+          calories: parseFloat(calories),
           quantity: 1,
         };
         setMeals([...meals, mealItem]);

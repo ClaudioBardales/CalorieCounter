@@ -6,7 +6,7 @@ const MealItem = ({ meal }) => {
       <div className="meal-name">
         {meal.name} <span className="text-muted">{meal.quantity}</span>
       </div>
-      <div className="calories">{meal.calories} Cal</div>
+      <div className="calories">{meal.calories}</div>
       <button className="btn btn-outline-danger btn-sm">+</button>
     </div>
   );

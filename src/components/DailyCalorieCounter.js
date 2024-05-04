@@ -1,5 +1,4 @@
 import React from 'react';
-import MealList from './MealList';
 
 const DailyCalorieCounter = ({ meals }) => {
   const totalCalories = meals.reduce(
@@ -12,7 +11,6 @@ const DailyCalorieCounter = ({ meals }) => {
       <h1 className="d-flex justify-content-center display-1">
         {totalCalories}/2150 CALORIES
       </h1>
-      {/* <MealList meals={meals} /> */}
     </div>
   );
 };
