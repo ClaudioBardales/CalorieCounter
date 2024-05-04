@@ -11,6 +11,7 @@ const App = () => {
     getNutritionData(foodItem)
       .then((calories) => {
         const mealItem = {
+          id: Math.random().toString(36).slice(2, 11),
           name: foodItem,
           calories: parseFloat(calories),
           quantity: 1,
@@ -20,11 +21,32 @@ const App = () => {
       .catch((error) => console.error('API error: ', error));
   };
 
+  const updateMealQuantity = (meal, delta) => {
+    setMeals(
+      meals.map((m) => {
+        if (m.id === meal.id) {
+          const updatedQuantity = m.quantity + delta;
+          return { ...m, quantity: updatedQuantity > 0 ? updatedQuantity : 1 };
+        }
+        return m;
+      })
+    );
+  };
+
+  const deleteMealItem = (mealToDelete) => {
+    setMeals(meals.filter((meal) => meal.id !== mealToDelete.id));
+  };
+
   return (
     <div className="container-md">
       <DailyCalorieCounter meals={meals} />
       <SearchComponent onSearch={addMealItem} />
-      <MealList meals={meals} />
+      <MealList
+        meals={meals}
+        onIncrease={(meal) => updateMealQuantity(meal, 1)}
+        onDecrease={(meal) => updateMealQuantity(meal, -1)}
+        onDelete={deleteMealItem}
+      />
     </div>
   );
 };
