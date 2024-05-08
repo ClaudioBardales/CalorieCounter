@@ -3,7 +3,7 @@ import MealItem from './MealItem';
 
 const MealList = ({ meals, onIncrease, onDecrease, onDelete }) => {
   return (
-    <div className="container meal-list bg-light text-dark p-3 m-2 rounded">
+    <div className="container mx-auto meal-list bg-light text-dark p-3 m-2 rounded">
       {meals.map((meal, index) => (
         <MealItem
           key={index}
