@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DailyCalorieCounter from './components/DailyCalorieCounter';
 import SearchComponent from './components/SearchComponent';
 import MealList from './components/MealList';
+import WaterTracker from './components/waterTracker';
 import { getNutritionData } from './apis/edanam';
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
         onDecrease={(meal) => updateMealQuantity(meal, -1)}
         onDelete={deleteMealItem}
       />
+      <WaterTracker />
     </div>
   );
 };

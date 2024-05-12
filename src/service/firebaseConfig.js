@@ -1,7 +1,8 @@
-// firebaseConfig.js
-import firebase from 'firebase/app';
-import 'firebase/database';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import { getAuth } from 'firebase/auth';
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyCOGE3BzjZTBUyJ5Oa6vLauOiOHSNDPdNc',
   authDomain: 'caloriecounter-72e75.firebaseapp.com',
@@ -13,9 +14,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const auth = getAuth(app);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+// Export the Firebase app and services
+export { app, database, auth };
