@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SearchComponent = ({ onSearch }) => {
   const [input, setInput] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    if (input.length > 2) {
+      setSuggestions(
+        ['Apple', 'Banana', 'Orange'].filter((fruit) =>
+          fruit.toLowerCase().includes(input.toLowerCase())
+        )
+      );
+    } else {
+      setSuggestions([]);
+    }
+  }, [input]);
 
   const handleInputChange = (e) => {
     setInput(e.target.value);
@@ -10,6 +23,7 @@ const SearchComponent = ({ onSearch }) => {
   const handleSearch = () => {
     if (input.trim() !== '') {
       onSearch(input);
+      setInput('');
     }
   };
 
@@ -22,6 +36,15 @@ const SearchComponent = ({ onSearch }) => {
         value={input}
         onChange={handleInputChange}
       />
+      {suggestions.length > 0 && (
+        <div className="suggestions">
+          {suggestions.map((suggestion, index) => (
+            <div key={index} onClick={() => setInput(suggestion)}>
+              {suggestion}
+            </div>
+          ))}
+        </div>
+      )}
       <button className="btn btn-primary" onClick={handleSearch}>
         Search
       </button>

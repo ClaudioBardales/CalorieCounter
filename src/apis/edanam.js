@@ -13,17 +13,22 @@ export const getNutritionData = async (foodItem) => {
         ingr: foodItem,
       },
     });
-    const validHint = response.data.hints.find(
-      (hint) => hint.food.nutrients.ENERC_KCAL !== undefined
-    );
-    if (validHint) {
-      return validHint.food.nutrients.ENERC_KCAL;
+    const firstHint = response.data.hints[0];
+    const nutrients = firstHint.food.nutrients;
+
+    if (nutrients) {
+      return {
+        calories: nutrients.ENERC_KCAL,
+        protein: nutrients.PROCNT || 0,
+        carbs: nutrients.CHOCDF || 0,
+        fats: nutrients.FAT || 0,
+      };
     } else {
-      console.error('Calories not Found');
-      return 'Calories not available';
+      console.error('Data not found');
+      return { calories: 0, protein: 0, carbs: 0, fats: 0 };
     }
   } catch (error) {
-    console.error('Error fetching nutrition data:', error);
-    throw error; // Consider handling this more gracefully in a production app
+    console.error('Data not found', error);
+    return { calories: 0, protein: 0, carbs: 0, fats: 0 };
   }
 };

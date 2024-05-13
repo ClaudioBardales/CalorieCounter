@@ -4,7 +4,7 @@ import { database } from '../service/firebaseConfig';
 
 const WaterTracker = () => {
   const [intake, setIntake] = useState(0);
-  const database = getDatabase(); // Assuming Firebase has been initialized elsewhere
+  const database = getDatabase();
 
   const handleAddWater = () => {
     setIntake((prev) => prev + 250); // Increase by 250ml
