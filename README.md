@@ -1,5 +1,7 @@
 # Calorie Tracker
 
+LIVE DEMO: https://chitocaloriecounter.netlify.app/
+
 ## Overview
 
 Calorie Tracker is a React-based web application designed to help users track their calorie intake. It utilizes Firebase for the backend database and is deployed using Netlify.
