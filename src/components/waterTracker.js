@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getDatabase, ref, runTransaction } from 'firebase/database';
+// eslint-disable-next-line
 import { database } from '../service/firebaseConfig';
 
 const WaterTracker = () => {
